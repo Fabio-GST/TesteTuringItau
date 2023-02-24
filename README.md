@@ -8,13 +8,13 @@ Esta é uma API de usuários e transações, desenvolvida em typescript com Node
 Para instalar a API, siga os passos abaixo:
 
 Clone o repositório em sua máquina local:
-
--- https://github.com/Fabio-GST/teste-turing
-
+```
+https://github.com/Fabio-GST/teste-turing
+```
 vá para o diretorio da api
-
+```
 cd ./teste-turing-api/
-
+```
 Instale as dependências do projeto utilizando o gerenciador de pacotes npm:
 
 npm install
