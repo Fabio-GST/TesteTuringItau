@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { Usuario, UsuarioModel } from '../models/Usuario';
 import { badRequest, internalServerError, validateNumber, notFound, ok } from '../services/util';
 
-function CriarUsuario (req: Request, res: Response) {
+function CriarUsuario(req: Request, res: Response) {
 
     const usuario = req.body as Usuario;
     const regexSenha = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/;
@@ -71,7 +71,6 @@ const autenticarLogin = (req: Request, res: Response) => {
 }
 
 const alterarSaldo = (req: Request, res: Response) => {
-    
     const id = parseInt(req.body.id);
     const valor = parseFloat(req.body.valor);
     const operacao = req.body.operacao;
@@ -85,9 +84,7 @@ const alterarSaldo = (req: Request, res: Response) => {
     return UsuarioModel.alterarSaldo(id, valor, operacao)
         .then(() => ok(res))
         .catch(err => internalServerError(res, err));
-
 }
-
 
 export const UsuarioController = {
     CriarUsuario,

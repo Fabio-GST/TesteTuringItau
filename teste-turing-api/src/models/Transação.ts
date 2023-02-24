@@ -28,10 +28,8 @@ const listTransacoes = async (id: Number) => {
     return retorno as Transacao[];
 }
 
-
 export const TransacaoModel = {
     CriarTransacao,
     getExtrato,
     listTransacoes
-
 }

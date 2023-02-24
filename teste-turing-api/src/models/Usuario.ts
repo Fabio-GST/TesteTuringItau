@@ -11,7 +11,6 @@ export type Usuario = {
 const CriarUsuario = async (usuario: Usuario) => {
     await dbQuery('INSERT INTO usuario (nome, login, senha, saldo) VALUES (?, ?, ?, ?)', [usuario.nome, usuario.login, usuario.senha, usuario.saldo])
     let retorno = await dbQuery(`SELECT seq AS Id FROM sqlite_sequence WHERE name = 'usuario'`)
-
     return retorno[0].id as number | undefined;
 }
 
@@ -55,10 +54,6 @@ const alterarSaldo = async(id: number, valor: number, operacao: 'adicionar' | 's
     await dbQueryFirst(`UPDATE Usuario SET saldo = ? WHERE id = ?`, [novoSaldo, id]) as Usuario ;
 
 }
-
-
-
-
 
 export const UsuarioModel = {
     CriarUsuario,

@@ -3,9 +3,7 @@ import { TransacaoModel } from '../models/Transação';
 import { UsuarioModel } from '../models/Usuario';
 import { badRequest, internalServerError, validateNumber, notFound } from '../services/util';
 
-
 const CriarTransacao = async (req: Request, res: Response) => {
-
     const Transacao = req.body;
     const tipo = Transacao.tipo;
 
@@ -40,6 +38,7 @@ const CriarTransacao = async (req: Request, res: Response) => {
 
     UsuarioModel.alterarSaldo(Transacao.id_emissor, Transacao.valor, "subtrair")
     UsuarioModel.alterarSaldo(Transacao.id_receptor, Transacao.valor, "adicionar")
+
     return TransacaoModel.CriarTransacao(Transacao)
         .then(usuario => {
             res.json(usuario)
@@ -80,7 +79,6 @@ const getExtrato = (req: Request, res: Response) => {
         })
         .catch(err => internalServerError(res, err));
 }
-
 
 export const TransacaoController = {
     CriarTransacao,

@@ -6,6 +6,6 @@ export const useRoutes = (app: Application) => {
     const apiRouter = Router();
     apiRouter.use('/usuario', UsuarioRouter)
     apiRouter.use('/transacao', TransacaoRouter)
-
+    
     app.use('/api/v1', apiRouter)
 }
