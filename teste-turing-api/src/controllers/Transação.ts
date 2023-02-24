@@ -10,6 +10,9 @@ const CriarTransacao = async (req: Request, res: Response) => {
     if (!Transacao)
         return badRequest(res, "Sua transferência não foi completada pois requisição esta incorreta")
 
+    if (Transacao.id_emissor === Transacao.id_receptor)
+        return badRequest(res, "Sua transferência não foi completada pois Não é possivel fazer transferencia para a mesma conta")
+
     if (!validateNumber(Transacao.valor))
         return badRequest(res, "Sua transferência não foi completada pois o valor é invalido")
 
