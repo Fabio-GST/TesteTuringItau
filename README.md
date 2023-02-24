@@ -26,7 +26,7 @@ npm start
 ```
 A API estará disponível na porta 8091 do localhost:
 
-http://localhost:3000
+http://localhost:8091
 
 ## Endpoints
 
