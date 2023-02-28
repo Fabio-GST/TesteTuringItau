@@ -8,10 +8,8 @@ export type Usuario = {
     saldo: number; 
 }
 
-const CriarUsuario = async (usuario: Usuario) => {
+const CriarUsuario = async (usuario: Usuario) => {  
     await dbQuery('INSERT INTO usuario (nome, login, senha, saldo) VALUES (?, ?, ?, ?)', [usuario.nome, usuario.login, usuario.senha, usuario.saldo])
-    let retorno = await dbQuery(`SELECT seq AS Id FROM sqlite_sequence WHERE name = 'usuario'`)
-    return retorno[0].id as number | undefined;
 }
 
 const getUsuario = async (id: Number) => {
@@ -40,18 +38,20 @@ const autenticarLogin = async(login:string, senha: string) =>{
 
 const alterarSaldo = async(id: number, valor: number, operacao: 'adicionar' | 'subtrair') =>{
     const usuario = await getUsuario(id);
-    let novoSaldo: number;
-  
-    if (operacao === 'adicionar') {
+    let novoSaldo: number = -1;
+
+    if (operacao === 'adicionar')
       novoSaldo = usuario.saldo + valor; 
-    } else {
+    if (operacao === 'subtrair') 
       novoSaldo = usuario.saldo - valor;
-    }
-  
+
     if (novoSaldo < 0) {
-        throw new Error('Operação inválida: saldo ficaria negativo.');
+        return false
+    }else{
+        await dbQueryFirst(`UPDATE Usuario SET saldo = ? WHERE id = ?`, [novoSaldo, id]) as Usuario ;
+        return true
     }
-    await dbQueryFirst(`UPDATE Usuario SET saldo = ? WHERE id = ?`, [novoSaldo, id]) as Usuario ;
+
 
 }
 

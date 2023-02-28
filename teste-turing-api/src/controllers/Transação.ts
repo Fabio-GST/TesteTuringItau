@@ -39,14 +39,17 @@ const CriarTransacao = async (req: Request, res: Response) => {
             return badRequest(res, "Sua transferência não foi completada pois o Tipo de transferencia é invalida")
     }
 
-    UsuarioModel.alterarSaldo(Transacao.id_emissor, Transacao.valor, "subtrair")
-    UsuarioModel.alterarSaldo(Transacao.id_receptor, Transacao.valor, "adicionar")
-
-    return TransacaoModel.CriarTransacao(Transacao)
+    if(await UsuarioModel.alterarSaldo(Transacao.id_emissor, Transacao.valor, "subtrair")){
+        UsuarioModel.alterarSaldo(Transacao.id_receptor, Transacao.valor, "adicionar")
+        return TransacaoModel.CriarTransacao(Transacao)
         .then(usuario => {
             res.json(usuario)
         })
         .catch(err => internalServerError(res, err));
+    
+    }else  {
+        return badRequest(res, 'Conta Sem Saldo');
+    }
     
 }
 const listTransacoes = (req: Request, res: Response) => {

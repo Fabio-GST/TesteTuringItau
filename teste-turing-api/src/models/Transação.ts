@@ -19,7 +19,7 @@ const CriarTransacao = async (Transacao: Transacao) => {
 }
 
 const getExtrato = async (id: Number) => {
-    const retorno = await dbQuery(`SELECT * FROM transacao WHERE id_emissor = ? OR id_receptor = ?`, [id]);
+    const retorno = await dbQuery(`SELECT * FROM transacao WHERE id_emissor = ? OR id_receptor = ? ORDER BY data DESC`, [id, id]);
     return retorno as Transacao[];
 }
 

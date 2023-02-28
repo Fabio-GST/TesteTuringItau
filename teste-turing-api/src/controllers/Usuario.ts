@@ -10,8 +10,10 @@ function CriarUsuario(req: Request, res: Response) {
         return badRequest(res, "Cadastro invalido");
     if (!regexSenha.test(usuario.senha.toString()))
         return badRequest(res, "Senha invalida " + usuario.senha);
+         
     return UsuarioModel.CriarUsuario(usuario)
-
+        .then(() => ok(res))
+        .catch(err => internalServerError(res, err));
 }
 
 const listUsuarios = ({ }: Request, res: Response) => {
