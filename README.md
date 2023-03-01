@@ -9,7 +9,7 @@ Para instalar a API, siga os passos abaixo:
 
 Clone o repositório em sua máquina local:
 ```
-https://github.com/Fabio-GST/teste-turing
+https://github.com/Fabio-GST/TesteTuringItau
 ```
 vá para o diretorio da api
 ```
@@ -59,14 +59,8 @@ POST /usuario
 A aplicação teste-turing-web é uma interface web para consumo da API teste-turing-api. Ela foi desenvolvida em React  e permite que o usuário realize transferências financeiras entre os usuários cadastrados na API.
 
 ### Instalação
-Para instalar a aplicação, siga os passos abaixo:
+Para instalar a aplicação web, siga os passos abaixo:
 
-Clone o repositório em sua máquina local:
-
-```
-https://github.com/Fabio-GST/teste-turing
-
-```
 
 Vá para o diretório da aplicação web:
 
