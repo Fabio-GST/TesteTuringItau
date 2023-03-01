@@ -14,7 +14,7 @@ const CriarTransacao = async (req: Request, res: Response) => {
         return badRequest(res, "Sua transferência não foi completada pois Não é possivel fazer transferencia para a mesma conta")
 
     if (!validateNumber(Transacao.valor))
-        return badRequest(res, "Sua transferência não foi completada pois o valor é invalido")
+        return badRequest(res, "Sua transferência não foi completada pois o valor é invalido ")
 
     switch (tipo) {
         case "PIX":

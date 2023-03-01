@@ -54,3 +54,49 @@ POST /usuario
     "saldo": 50
 }
 ```
+
+## teste-turing-web
+A aplicação teste-turing-web é uma interface web para consumo da API teste-turing-api. Ela foi desenvolvida em React  e permite que o usuário realize transferências financeiras entre os usuários cadastrados na API.
+
+### Instalação
+Para instalar a aplicação, siga os passos abaixo:
+
+Clone o repositório em sua máquina local:
+
+```
+https://github.com/Fabio-GST/teste-turing
+
+```
+
+Vá para o diretório da aplicação web:
+
+```
+cd ./teste-turing-web/
+```
+
+Instale as dependências do projeto utilizando o gerenciador de pacotes npm:
+
+```
+npm install
+```
+
+Inicie a aplicação:
+
+```
+npm start
+```
+
+A aplicação estará disponível na porta 3000 do localhost:
+
+```
+http://localhost:3000
+```
+
+### Utilização
+Ao acessar a aplicação, será exibida a tela de login. O usuário deve informar seu login e senha cadastrados na API para ter acesso à aplicação.
+
+Na tela principal da aplicação, é possível visualizar a lista de usuários cadastrados na API e seu respectivo saldo. Para realizar uma transferência, basta selecionar o usuário de origem, o usuário de destino e o valor a ser transferido.
+
+Ao clicar no botão "Transferir", a aplicação realizará uma requisição à API para efetuar a transferência.
+
+Além disso, é possível visualizar o extrato de transações do usuário logado. Será exibida uma lista das transações realizadas por aquele usuário, incluindo o valor, a data 
